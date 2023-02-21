@@ -6,6 +6,16 @@ using LibraryWebApi.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var CORSOpenPolicy = "OpenCORSPolicy";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+      name: CORSOpenPolicy,
+      builder => {
+          builder.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
+      });
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -21,7 +31,7 @@ if (app.Environment.IsDevelopment())
 { }
 
 app.UseHttpsRedirection();
-
+app.UseCors(CORSOpenPolicy);
 app.UseAuthorization();
 
 app.UseMiddleware<RequestLoggingMiddleware>();

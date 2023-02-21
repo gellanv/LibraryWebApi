@@ -1,11 +1,13 @@
 ﻿using Library.DTO.Request;
 using Library.DTO.Response;
 using Library.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApi.Controllers
 {
     [ApiController]
+    [EnableCors("OpenCORSPolicy")]
     [Route("api/books")]
 
     public class BookController : ControllerBase
