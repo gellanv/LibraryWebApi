@@ -7,7 +7,7 @@ namespace LibraryWebApi.Controllers
 {
     [ApiController]
     [EnableCors("OpenCORSPolicy")]
-    [Route("api/books")]
+    [Route("api/recommended")]
     public class RecommendedController : ControllerBase
     {
         protected readonly BookService bookService;
